@@ -4,9 +4,23 @@
     padding:0%;
     font-family: 'Roboto', sans-serif;
   }
+
+  /* Faz a div de partículas ficar full screen e atrás do conteúdo */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* fica atrás */
+  background-color: #111; /* fundo escuro */
+}
+
+html { scroll-behavior: smooth; }
   
   body{
     background-color:var(--cor-primaria);
+    scroll-behavior: smooth;
   }
   
  
@@ -63,10 +77,10 @@ a:hover{
   
   
   .foto-principal{
-    width:350px;
-    height: 350px;
+    width:550px;
+    height: 550px;
     border:3px solid  var(--cor-terciaria);
-    border-radius: 100%;
+    border-radius: 50%;
     display: block;
     margin: auto;
    box-shadow: var(--cor-terciaria) 0px 20px 30px -10px;
@@ -76,18 +90,18 @@ a:hover{
   }
   
   .botao1 {
-    margin-left:47%;
-    margin-top: 130px;
-    background-color:var(--cor-terciaria);
-    color:#ffffff;
-    font-size:20px;
+    display: block;       /* para respeitar margin auto */
+    margin: 130px auto 0 auto; /* topo 130px, centralizado horizontalmente */
+    background-color: var(--cor-terciaria);
+    color: #ffffff;
+    font-size: 20px;
     text-decoration: none;
-    display: block;
-    padding:10px 5px 10px 5px;
-    border-radius:10px;
-    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
     border: none;
+    width: fit-content; /* ajusta a largura ao conteúdo */
   }
+  
   
   .botao1:hover{
     background:var(--cor-primaria);
@@ -123,118 +137,232 @@ a:hover{
   /* TEXTO */
   .sobre1 {
     flex: 1;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: #ccc;
     line-height: 1.6;
     margin-top: 50px;
   }
   
   
-  
-  .habilidade{
-    font-size: 50px;
-    margin-top: 100px;
-
-  }
-  
-  .flex{
-    display: flex;               /* coloca um do lado do outro */
-    justify-content: center;     /* centraliza na horizontal */
-    align-items: center;         /* centraliza verticalmente */
-    gap:25px;                   /* espaçamento entre ícones */
-    padding:  20px;
-    background-color: var(--cor-secundaria);
-    border-radius: 12px;
-    box-shadow: 0 0 15px var(--cor-terciaria);
-    max-width: 550px;
-    margin: 40px auto;
-  }
-  
-  .flex i {
-    font-size:60px;
-    transition: transform 0.3s;
-    padding:10px 90px 10px 90px;
-  }
-  
-  .flex i:hover {
-    transform: scale(1.2);
-  }
-  
-  
-
-  .projetos-box-proj1{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin:100px;	
-  }
-
-
-  .projetos-box-proj1:hover{
-    transform: scale(1.03);
-  }
-
-  .projrto-1{
-    width:150px;
-    height:100px;
-    border-radius:4px;
-    object-fit: cover;
-    box-shadow: rgb(4,255,66)  0px 20px 30px -10px;
-    border: #00ff88 solid 2px;
-  }
- 
- 
- .link{
-  margin:10px;
-  text-decoration: none;
-  color: #00ff88;
-  font-size: 25px;
-  font-weight: bold;
- font-family: 'Segoe UI', sans-serif;
- }
-
-
- .link:hover{
-    color: #fff;
-  }
-
-
-   .contato-container {
-    max-width: 600px;
-    margin: 20rem auto;
+  #skills {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 8px;
-    box-shadow: rgb(4,255,66)  0px 20px 30px -10px;
-  }
-
-  h2 {
     text-align: center;
-    color: #00ff88;
   }
-
-  label {
-    display: block;
-    margin-top: 1rem;
+  
+  .titulo {
+    margin-top:10px;
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .destaque {
+    color: var(--cor-terciaria);
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  /* CAIXA */
+  .skill-card {
+    background-color: #111;
+    border: 2px solid var(--cor-terciaria);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease;
+    margin-top: 100px;
+  }
+  
+  .skill-card i {
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    font-weight: bold;
-    color:#00ff88;
   }
+  
+  .skill-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: white;
+  }
+  
+  .skill-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.4;
+  }
+  
+  .skill-card:hover {
+    transform: scale(1.05);
+    background-color: #00ff88;
+    color: black;
+  }
+  
+  .skill-card:hover i,
+  .skill-card:hover h3,
+  .skill-card:hover p {
+    color: black;
+  }
+  
 
+  #projetos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .titulo {
+    font-size: 2rem;
+    margin-top: 200px;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  
+  .destaque {
+    color: var(--cor-terciaria);
+  }
+  
+  /* Grid para os projetos */
+  .projetos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  /* Card individual */
+  .projeto-card {
+    margin-top: 100px;
+    background-color: #111;
+    border: 2px solid var(--cor-terciaria);
+    border-radius: 12px;
+    padding: 1rem;
+    width: 300px;
+    color: white;
+    transition: transform 0.3s ease;
+  }
+  
+  .projeto-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .projeto-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .botao-projeto {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--cor-terciaria);
+    color: black;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .botao-projeto:hover {
+    background-color: #00ff88;
+  }
+  
+  .projeto-card:hover {
+    transform: scale(1.05);
+  }
+  
+
+  .contato-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  footer {
+    background-color: #111;
+    padding: 3rem 2rem;
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top:100px;
+  }
+  
+  .contato-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .contato-container h2 {
+    color:var(--cor-terciaria);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;;
+  }
+  
+  label {
+    text-align: left;
+    font-weight: 600;
+    color: var(--cor-terciaria);
+  }
+  
   input[type="text"],
   input[type="email"],
   textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #00ff88;
-    border-radius: 4px;
-    resize: vertical;
+    background-color: #222;
+    border: 2px solid var(--cor-secundaria);
+    border-radius: 8px;
+    padding: 0.7rem;
+    color: white;
     font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s ease;
   }
-
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: var(--cor-terciaria);
+    outline: none;
+  }
   
   textarea {
-    min-height: 120px;
+    min-height: 100px;
   }
+  
+  button.Enviar {
+    background-color:var(--cor-terciaria);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+    width: 150px;
+  }
+  
+  button.Enviar:hover {
+    background-color: white;
+  }
+  
+
 
   .Enviar {
     margin-top: 1.5rem;
@@ -290,6 +418,15 @@ a:hover{
     --cor-terciaria: #5DD62C;
     --cor-hover: #337418;
     --cor-hover: #F8F8F8;
+  }
+  
+  body.light-mode .botao1 {
+    background-color: #2D9CDB; /* azul claro */
+    color: #ffffff;
+  }
+  
+  body.light-mode .botao1:hover {
+    background-color: #1a6fa5; /* azul mais escuro no hover */
   }
   
  
