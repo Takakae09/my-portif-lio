@@ -429,4 +429,23 @@ a:hover{
     background-color: #1a6fa5; /* azul mais escuro no hover */
   }
   
- 
+  #descricao-prjetos {
+    font-size: 16px;       /* Tamanho da fonte confortável para leitura */
+    line-height: 1.5;      /* Espaçamento entre linhas para melhorar a leitura */
+    color: #4a5568;
+    ;        /* Cor do texto */
+    margin-top: 10px;      /* Espaço acima do parágrafo */
+    text-align: justify;   /* Justifica o texto para ficar alinhado dos dois lados */
+    font-family: 'Arial', sans-serif; /* Fonte legível */
+  }
+
+  .projeto-card h4 {
+    font-size: 18px;
+    color: #2f855a;  
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  
