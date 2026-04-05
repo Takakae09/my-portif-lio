@@ -448,4 +448,10 @@ a:hover{
     font-family: 'Arial', sans-serif;
   }
   
+
+  .minilogo {
+width: 200px;
+  height: 200px;
+  margin-right: 8px;
+  }
   
