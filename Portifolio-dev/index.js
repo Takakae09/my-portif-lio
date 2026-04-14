@@ -122,4 +122,20 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("theme-toggle");
+
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+
+    if (document.body.classList.contains("light")) {
+      btn.innerText = "☀️";
+    } else {
+      btn.innerText = "🌙";
+    }
+  });
+});
   
