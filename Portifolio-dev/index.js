@@ -1,141 +1,97 @@
-// Espera o HTML carregar
-document.addEventListener("DOMContentLoaded", function () {
-    const botaoContato = document.querySelector(".botao1"); // seu botão "Contato-me"
-    const formulario = document.getElementById("formulario"); // o formulário no footer
-  
-    if (botaoContato && formulario) {
-      botaoContato.addEventListener("click", function () {
-        formulario.scrollIntoView({ behavior: "smooth" }); // rola até o formulário
-      });
-    }
-  });
-  
+document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const botaoContato = document.querySelector(".botao1");
-    const formulario = document.getElementById("formulario");
-  
-    if (botaoContato && formulario) {
-      botaoContato.addEventListener("click", function () {
-        formulario.scrollIntoView({ behavior: "smooth" });
-      });
-    }
-  
-    const form = document.querySelector("form");
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-  
-      const nome = document.getElementById("nome").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const mensagem = document.getElementById("mensagem").value.trim();
-  
-      if (nome === "" || email === "" || mensagem === "") {
-        alert("Por favor, preencha todos os campos.");
-        return;
-      }
-  
-      // ETAPA 3 – Vamos adicionar aqui o envio com EmailJS
-    });
-  });
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const mensagem = document.getElementById("mensagem").value.trim();
 
-
-  particlesJS("particles-js", {
-    "particles": {
-      "number": {
-        "value": 50,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#00ff88"
-      },
-      "shape": {
-        "type": "circle"
-      },
-      "opacity": {
-        "value": 0.8,
-        "random": true
-      },
-      "size": {
-        "value": 4,
-        "random": true
-      },
-      "move": {
-        "enable": true,
-        "direction": "bottom",
-        "speed": 2,
-        "out_mode": "out"
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": false
-        },
-        "onclick": {
-          "enable": false
-        },
-        "resize": true
-      }
-    },
-    "retina_detect": true
-  });
-  
-
-
-  function smoothScrollTo(element, duration = 1000) {
-    const targetY = element.getBoundingClientRect().top + window.pageYOffset;
-    const startY = window.pageYOffset;
-    const distance = targetY - startY;
-    let startTime = null;
-  
-    function easeInOutQuad(t) {
-      return t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t;
-    }
-  
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const eased = easeInOutQuad(progress);
-      window.scrollTo(0, startY + distance * eased);
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    }
-    requestAnimationFrame(animation);
+  if (!nome || !email || !mensagem) {
+    alert("Preencha todos os campos!");
+    return;
   }
-  
-  // Aplicar aos links do menu:
-  document.querySelectorAll('.topo a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        // Ajuste duration (ms) conforme desejar, ex: 1500 para mais lento
-        smoothScrollTo(target, 1500);
-      }
-    });
-  });
-  
 
+  const texto = `Olá! Meu nome é ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+
+  const numero = "5521971088704"; // seu WhatsApp
+
+  window.open(`https://wa.me/${numero}?text=${texto}`, "_blank");
+});
+
+  // 🔹 Formulário
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mensagem = document.getElementById("mensagem").value.trim();
+
+    if (nome === "" || email === "" || mensagem === "") {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    alert("Mensagem enviada com sucesso!");
+  });
+;
+
+// 🔹 Particles (fora do DOMContentLoaded pode funcionar, mas assim é mais seguro)
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 50 },
+    color: { value: "#00ff88" },
+    shape: { type: "circle" },
+    opacity: { value: 0.8, random: true },
+    size: { value: 4, random: true },
+    move: {
+      enable: true,
+      direction: "bottom",
+      speed: 2,
+      out_mode: "out"
+    }
+  },
+  interactivity: {
+    events: {
+      onhover: { enable: false },
+      onclick: { enable: false },
+      resize: true
+    }
+  },
+  retina_detect: true
+});
+
+// Rolamento 
 
 document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("theme-toggle");
 
-  if (!btn) return;
+  const botaoContato = document.querySelector(".botao1");
+  const formulario = document.getElementById("formulario");
 
-  btn.addEventListener("click", () => {
-    document.body.classList.toggle("light");
+  if (botaoContato && formulario) {
+    botaoContato.addEventListener("click", function (e) {
+      e.preventDefault();
+      formulario.scrollIntoView({ behavior: "smooth" });
+    });
+  }
 
-    if (document.body.classList.contains("light")) {
-      btn.innerText = "☀️";
-    } else {
-      btn.innerText = "🌙";
-    }
-  });
 });
-  
+
+// Git-Hub //
+fetch("https://api.github.com/users/Takakae09/repos")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("projetos-api");
+
+    data.forEach(repo => {
+      const card = document.createElement("div");
+
+      card.innerHTML = `
+        <h3>${repo.name}</h3>
+        <p>${repo.description || "Sem descrição"}</p>
+        <a href="${repo.html_url}" target="_blank">Ver projeto</a>
+      `;
+
+      container.appendChild(card);
+    });
+  });
